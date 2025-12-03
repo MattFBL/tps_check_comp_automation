@@ -116,13 +116,6 @@ def process_company_event(company_id, properties):
 
 @app.route('/api/webhooks/hubspot', methods=['POST'])
 def hubspot_webhook():
-    """HubSpot Webhook Endpoint"""
-    print("\n" + "="*70)
-    print("✅ WEBHOOK ENDPOINT HIT!")
-    print("="*70)
-    
-@app.route('/api/webhooks/hubspot', methods=['POST'])
-def hubspot_webhook():
     """HubSpot Webhook Endpoint - Company Properties"""
     print("\n" + "="*70)
     print("✅ WEBHOOK ENDPOINT HIT!")
