@@ -5,6 +5,10 @@ from pathlib import Path
 import requests
 from flask import Flask, request, jsonify
 
+print("="*70)
+print("FLASK APP STARTING")
+print("="*70)
+
 # Load environment variables
 try:
     from dotenv import load_dotenv
@@ -18,6 +22,12 @@ HUBSPOT_ACCESS_TOKEN = os.environ.get("HUBSPOT_ACCESS_TOKEN")
 HUBSPOT_ENDPOINT = os.environ.get("HUBSPOT_ENDPOINT", "https://api.hubapi.com/crm/v3/objects/companies")
 TPS_API_KEY = os.environ.get("TPS_API_KEY")
 TPS_ENDPOINT = os.environ.get("TPS_ENDPOINT", "https://api.tpsservices.co.uk/check")
+PORT = os.environ.get("PORT", "5000")
+
+print(f"PORT: {PORT}")
+print(f"HUBSPOT_ENDPOINT: {HUBSPOT_ENDPOINT}")
+print(f"TPS_ENDPOINT: {TPS_ENDPOINT}")
+print("="*70)
 
 # Track processed events
 processed_events = {}
