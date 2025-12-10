@@ -5,9 +5,12 @@ from pathlib import Path
 import requests
 from flask import Flask, request, jsonify
 
-print("="*70)
-print("FLASK APP STARTING")
-print("="*70)
+import os
+import json
+import threading
+from pathlib import Path
+import requests
+from flask import Flask, request, jsonify
 
 # Load environment variables
 try:
@@ -22,12 +25,6 @@ HUBSPOT_ACCESS_TOKEN = os.environ.get("HUBSPOT_ACCESS_TOKEN")
 HUBSPOT_ENDPOINT = os.environ.get("HUBSPOT_ENDPOINT", "https://api.hubapi.com/crm/v3/objects/companies")
 TPS_API_KEY = os.environ.get("TPS_API_KEY")
 TPS_ENDPOINT = os.environ.get("TPS_ENDPOINT", "https://api.tpsservices.co.uk/check")
-PORT = os.environ.get("PORT", "5000")
-
-print(f"PORT: {PORT}")
-print(f"HUBSPOT_ENDPOINT: {HUBSPOT_ENDPOINT}")
-print(f"TPS_ENDPOINT: {TPS_ENDPOINT}")
-print("="*70)
 
 # Track processed events
 processed_events = {}
@@ -210,9 +207,7 @@ def health():
     return jsonify({"status": "ok", "processed_events": len(processed_events)}), 200
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    print(f"Starting Flask app on port {port}")
-    app.run(host="0.0.0.0", port=port, debug=False)
+    app.run()
 
 # Ensure app is exported for gunicorn
 __all__ = ['app']
